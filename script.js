@@ -1,3 +1,48 @@
+//event listener to detect key presses and releases:
+let leftPaddleMoveUp = false;
+let leftPaddleMoveDown = false;
+let rightPaddleMoveUp = false;
+let rightPaddleMoveDown = false;
+
+//initialize score
+let leftScore = 0;
+let rightScore = 0;
+
+
+document.addEventListener("keydown", function(event) {
+    switch(event.key) {
+        case "ArrowUp":
+            rightPaddleMoveUp = true;
+            break;
+        case "ArrowDown":
+            rightPaddleMoveDown = true;
+            break;
+        case "w":
+            leftPaddleMoveUp = true;
+            break;
+        case "s":
+            leftPaddleMoveDown = true;
+            break;
+    }
+});
+
+document.addEventListener("keyup", function(event) {
+    switch(event.key) {
+        case "ArrowUp":
+            rightPaddleMoveUp = false;
+            break;
+        case "ArrowDown":
+            rightPaddleMoveDown = false;
+            break;
+        case "w":
+            leftPaddleMoveUp = false;
+            break;
+        case "s":
+            leftPaddleMoveDown = false;
+            break;
+    }
+});
+
 document.addEventListener("DOMContentLoaded", function() {
 
 // DOM Elements
@@ -5,7 +50,6 @@ const canvas = document.getElementById("pongCanvas");
 const ctx = canvas.getContext("2d");
 
 // Game variables and constants
-// TODO: Define ball, paddles, scores, etc.
 //game objects and Var
 //bal object
 let ball = {
@@ -40,7 +84,7 @@ let rightPaddle = {
 
 //draws the ball on the canvas
 function drawBall() {
-    // TODO: Implement
+    //  Implement
     ctx.fillStyle = "white";
     ctx.beginPath();
     ctx.arc(ball.x, ball.y, ball.radius, 0, Math.PI * 2, false);
@@ -50,7 +94,6 @@ function drawBall() {
 }
 
 function drawPaddles() {
-    // TODO: Implement
     ctx.fillStyle = "white";
     ctx.fillRect(leftPaddle.x, leftPaddle.y, leftPaddle.width, leftPaddle.height);
     ctx.fillRect(rightPaddle.x, rightPaddle.y, rightPaddle.width, rightPaddle.height);
@@ -58,12 +101,14 @@ function drawPaddles() {
 }
 
 function drawScores() {
-    // TODO: Implement
+    ctx.font = "30px Arial";
+    ctx.fillText(leftScore, canvas.width / 4, 30);
+    ctx.fillText(rightScore, (3 * canvas.width) / 4, 30);
 }
 
 // Update game's state
 function update() {
-    // TODO: Implement ball movement, paddle collision, etc.
+    // Implement ball movement, paddle collision, etc.
 
     ball.x += ball.dx;
     ball.y += ball.dy;
@@ -73,17 +118,68 @@ function update() {
         ball.dy = -ball.dy;
     }
 
-    // TODO: Ball collision with paddles, scoring, etc.
+     // Left paddle movement
+     if (leftPaddleMoveUp && leftPaddle.y > 0) {
+        leftPaddle.y -= leftPaddle.dy;
+    }
+    if (leftPaddleMoveDown && (leftPaddle.y + leftPaddle.height) < canvas.height) {
+        leftPaddle.y += leftPaddle.dy;
+    }
+
+    // Right paddle movement
+    if (rightPaddleMoveUp && rightPaddle.y > 0) {
+        rightPaddle.y -= rightPaddle.dy;
+    }
+    if (rightPaddleMoveDown && (rightPaddle.y + rightPaddle.height) < canvas.height) {
+        rightPaddle.y += rightPaddle.dy;
+    }
+
+    // Ball collision with paddles, scoring, etc.
+    // Ball collision with left paddle
+    if (ball.x - ball.radius < leftPaddle.x + leftPaddle.width &&
+        ball.x + ball.radius > leftPaddle.x &&
+        ball.y - ball.radius < leftPaddle.y + leftPaddle.height &&
+        ball.y + ball.radius > leftPaddle.y) {
+        ball.dx = -ball.dx; // Change ball direction
+    }
+
+    // Ball collision with right paddle
+    if (ball.x - ball.radius < rightPaddle.x + rightPaddle.width &&
+        ball.x + ball.radius > rightPaddle.x &&
+        ball.y - ball.radius < rightPaddle.y + rightPaddle.height &&
+        ball.y + ball.radius > rightPaddle.y) {
+        ball.dx = -ball.dx; // Change ball direction
+    }
+
+    // Scoring
+    if (ball.x - ball.radius < 0) { // ball has passed the left side
+        rightScore++;
+        resetBall();
+    }
+
+    if (ball.x + ball.radius > canvas.width) { // ball has passed the right side
+        leftScore++;
+        resetBall();
+    }
+}
+
+
+function resetBall() {
+    ball.x = canvas.width / 2;
+    ball.y = canvas.height / 2;
+    ball.dx = -ball.dx; // Change ball direction for variety
 }
 
 // Main game loop
 function gameLoop() {
-    // TODO: Implement drawing and updating
+    // Implement drawing and updating
     ctx.clearRect(0, 0, canvas.width, canvas.height); // clear canvas
     drawBall();
     drawPaddles();
     update();
     requestAnimationFrame(gameLoop);
+
+    drawScores();
 
 
     //requestAnimationFrame(gameLoop);
@@ -94,10 +190,10 @@ function gameLoop() {
 //return a random number between 1 and 6
 
 function generateDiceValue(){
-    //TODO: return a random number between 1 and 6
+    //return a random number between 1 and 6
 }
 
-//todo : add more helper function if needed
+//add more helper function if needed
 
 //game initialization
 

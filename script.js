@@ -1,6 +1,21 @@
-// Game: Pong
-// Author: Haoyang Shi
-// Date: 10/11
+/*
+Course: SENG 513 
+Date: OCT 16, 2023 
+Assignment 2 
+Name: Haoyang Shi 
+UCID: 30105296 
+
+    All pictures download from https://unsplash.com, and meet the CC0 criteria
+    basketball:Photo by Anastasiia Rozumna on Unsplash
+    dinoback:Photo by Blanca Paloma Sánchez on Unsplash
+    minidino:Photo by Brett Meliti on Unsplash
+    Favicon: Photo by Everyday basics on Unsplash
+
+*/
+
+
+
+
 // Global variables
 let leftPaddleMoveUp = false;
 let leftPaddleMoveDown = false;

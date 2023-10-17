@@ -1,11 +1,156 @@
+/*
+Links to all the pictures used in this assignment:
+https://stock.adobe.com/images/cute-dinosaurs-pattern-vector-cartoon-dino-background-baby-print/164623755
+https://www.etsy.com/ca/listing/1321050987/hand-drawn-trex-svg-illustration-kawaii
+https://www.vecteezy.com/free-png/basketball
+https://www.pinterest.ca/pin/9499849193136066/
+*/
+
+/* General styles */
 body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: black;
+    font-family: Arial, sans-serif;
 }
 
-canvas {
-    border: 1px solid white;
+.game-container {
+    margin: 0 auto;
+    width: 800px;
+    text-align: center;
+    border:3px solid #000; 
+}
+
+.instructions {
+    margin-bottom: 20px;
+}
+
+/* Scoreboard styles */
+.scoreboard {
+    display: flex;
+    justify-content: space-between;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Game area styles */
+#gameArea {
+    width: 800px;
+    height: 400px;
+    position: relative;
+    background-image: url('dinoback.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    border: 3px solid #000;
+}
+
+/* Paddle styles */
+.paddle {
+    width: 30px;
+    height: 150px;
+    position: absolute;
+}
+
+/* Styles for paddle images */
+.paddle-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /*ensure the image covers the entire paddle without stretching*/
+}
+
+#leftPaddle {
+    left: 0;
+    top: 125px;
+}
+
+#rightPaddle {
+    right: 0;
+    top: 125px;
+}
+
+/* Ball styles */
+.ball {
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    top: 190px;
+    left: 390px;
+}
+
+/* Styles for ball image */
+.ball-img {
+    width: 100%;
+    height: 100%;
+}
+
+/* Controls styles */
+.controls {
+    margin-top: 20px;
+}
+
+/* Feedback styles */
+.feedback {
+    margin-top: 20px;
+    text-align: left;
+}
+
+.feedback textarea {
+    width: 100%;
+    height: 80px;
+    margin-bottom: 10px;
+    padding: 10px;
+    resize: none;
+}
+
+/* Button styles */
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007BFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Player indicators */
+.player-indicators {
+    margin-top: 20px;
+}
+
+.player-turn {
+    display: none;
+    padding: 5px;
+    background-color: #f2f2f2;
+    border-radius: 4px;
+    font-size: 18px;
+}
+
+/* Media query for smaller screens */
+@media (max-width: 850px) {
+    .game-container {
+        width: 400px;
+        padding: 0 10px; /*add some padding on the sides*/
+    }
+
+    #gameArea {
+        width: 400px;
+        height: 50vw;/*make height proportional to width*/
+    }
+
+    .scoreboard .player-score {
+        font-size: 18px;
+    }
+
+    /* Adjustments for smaller screens */
+    .paddle {
+        width: 15px;
+        height: 75px;
+    }
+    
+    .ball {
+        width: 20px;
+        height: 20px;
+    }
 }

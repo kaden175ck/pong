@@ -1,13 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pong Game</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="icon" href="favicon.png">
 </head>
+
 <body>
-    <canvas id="pongCanvas" width="800" height="400"></canvas>
+    <div class="game-container">
+        <!-- Title -->
+        <h1>Pong: The Classic Arcade Game</h1>
+
+        <!-- Instructions -->
+        <div class="instructions">
+            <p>Controls: Player 1 - W/S, Player 2 - Arrow Up/Down</p>
+        </div>
+
+        <!-- Scoreboard -->
+        <div class="scoreboard">
+            <span>Player 1: </span>
+            <div class="player-score" id="leftPlayerScore">0</div>
+            <span>Player 2: </span>
+            <div class="player-score" id="rightPlayerScore">0</div>
+        </div>
+
+        <!-- Game Area -->
+        <div id="gameArea">
+            <!-- Left Paddle -->
+            <div id="leftPaddle" class="paddle">
+                <img src="minidino.png" alt="Left paddle" class="paddle-img">
+            </div>
+
+            <!-- Right Paddle -->
+            <div id="rightPaddle" class="paddle">
+                <img src="minidino.png" alt="Right paddle" class="paddle-img">
+            </div>
+
+            <!-- Ball -->
+            <div id="ball" class="ball">
+                <img src="basketball.jpg" alt="Ball" class="ball-img">
+            </div>
+        </div>
+
+        <!-- Game Controls -->
+        <div class="controls">
+            <button id="startBtn" onclick="startGame()">Start</button>
+            <button id="pauseBtn" onclick="pauseGame()">Pause</button>
+            <button id="resetBtn" onclick="resetGame()">Reset</button>
+        </div>
+
+        <!-- Feedback Section -->
+        <div class="feedback">
+            <h2>Feedback</h2>
+            <p>Enjoyed the game? Found a bug? Let us know!</p>
+            <textarea placeholder="Your feedback..."></textarea>
+            <button>Submit Feedback</button>
+        </div>
+
+        <!-- Player Indicators -->
+        <div class="player-indicators">
+            <div class="player-turn" id="leftPlayerTurn" style="display: none;">Player 1's Turn</div>
+            <div class="player-turn" id="rightPlayerTurn" style="display: none;">Player 2's Turn</div>
+        </div>
+    </div>
+
+    <!-- JS Script -->
     <script src="script.js"></script>
 </body>
+
 </html>

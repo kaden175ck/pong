@@ -6,14 +6,7 @@ Name: Haoyang Shi
 UCID: 30105296 
 
     All pictures download from https://unsplash.com, and meet the CC0 criteria
-    basketball:Photo by Anastasiia Rozumna on Unsplash
-    dinoback:Photo by Blanca Paloma Sánchez on Unsplash
-    minidino:Photo by Brett Meliti on Unsplash
-    Favicon: Photo by Everyday basics on Unsplash
-
-
-The file contains:
-
+    ............see pictures details in README file
 */
 
 
@@ -29,29 +22,78 @@ let rightScore = 0;
 let gameRunning = false;
 const SCORE_LIMIT = 5;
 let gameInterval;  // Interval ID to control game loop
+let gameMode = '2P'; 
+let difficulty = 'easy'; 
+let leftPaddle, rightPaddle, ballElement, gameArea;
+const INITIAL_X_VALUE_FOR_AIPADDLE = 700;  
+const INITIAL_Y_VALUE_FOR_AIPADDLE = 200;  
+
+let ball = {
+    x: 390, 
+    y: 190
+};
+
+let aiPaddle = {
+    x: INITIAL_X_VALUE_FOR_AIPADDLE,  // X position
+    y: INITIAL_Y_VALUE_FOR_AIPADDLE   // Y position
+};
 
 
 document.addEventListener("DOMContentLoaded", function() {
-    // Game controls
-    document.getElementById('startBtn').addEventListener('click', startGame);
-    document.getElementById('pauseBtn').addEventListener('click', pauseGame);
-    document.getElementById('resetBtn').addEventListener('click', resetGame);
-    
-    // Keyboard controls
-    document.addEventListener('keydown', handleKeyDown);
-    document.addEventListener('keyup', handleKeyUp);
+        // Cache DOM elements
+        leftPaddle = document.getElementById('leftPaddle');
+        rightPaddle = document.getElementById('rightPaddle');
+        ballElement = document.getElementById('ball');
+        gameArea = document.getElementById('gameArea');
+
+        // Game controls
+        document.getElementById('startBtn').addEventListener('click', startGame);
+        document.getElementById('pauseBtn').addEventListener('click', pauseGame);
+        document.getElementById('resetBtn').addEventListener('click', resetGame);
+        
+        // Keyboard controls
+        document.addEventListener('keydown', handleKeyDown);
+        document.addEventListener('keyup', handleKeyUp);
+
+        // Theme selector event
+        document.getElementById('themeSelector').addEventListener('change', function() {
+            let selectedTheme = this.value;
+            gameArea.className = "";  // Clear any existing theme classes
+            if (selectedTheme !== 'default') {
+                gameArea.classList.add(selectedTheme);  // new theme class
+            }
+        });
+
+
+        document.getElementById('ballColorSelector').addEventListener('change', function() {
+            let selectedColor = this.value;
+            if (selectedColor === 'default') {
+                ballElement.style.backgroundColor = 'black';
+            } else {
+                ballElement.style.backgroundColor = selectedColor;
+            }
+        });
+        
 });
 
+
 function initializeGame() {
-    // Set initial state
+    // Set initial state using global objects
     leftScore = 0;
     rightScore = 0;
     updateScoreDisplay();
-    movePaddle('leftPaddle', 0);
-    movePaddle('rightPaddle', 0);
-    moveBall(390, 190); // Starting ball position
-}
+    movePaddle(leftPaddle, 0);
+    moveBall(ball.x, ball.y);
 
+    // If gameMode is 1P, then set AI paddle position
+    if (gameMode === '1P') {
+        aiPaddle.x = INITIAL_X_VALUE_FOR_AIPADDLE;
+        aiPaddle.y = INITIAL_Y_VALUE_FOR_AIPADDLE;
+        movePaddle(rightPaddle, aiPaddle.y);
+    } else if (gameMode === '2P') {
+        movePaddle(rightPaddle, 0);
+    }
+}
 
 
 function handleKeyDown(event) {
@@ -59,49 +101,54 @@ function handleKeyDown(event) {
     switch(event.keyCode) {
         case 87: leftPaddleMoveUp = true; break;
         case 83: leftPaddleMoveDown = true; break;
-        case 38: rightPaddleMoveUp = true; break;
-        case 40: rightPaddleMoveDown = true; break;
+        // Check if gameMode is 2P before accepting input for right paddle
+        case 38: if (gameMode === '2P') rightPaddleMoveUp = true; break;
+        case 40: if (gameMode === '2P') rightPaddleMoveDown = true; break;
     }
 }
+
 
 function handleKeyUp(event) {
     // Stop paddle movements on key release
     switch(event.keyCode) {
         case 87: leftPaddleMoveUp = false; break;
         case 83: leftPaddleMoveDown = false; break;
-        case 38: rightPaddleMoveUp = false; break;
-        case 40: rightPaddleMoveDown = false; break;
+        // Check if gameMode is 2P before accepting input for right paddle
+        case 38: if (gameMode === '2P') rightPaddleMoveUp = false; break;
+        case 40: if (gameMode === '2P') rightPaddleMoveDown = false; break;
     }
 }
 
-function movePaddle(paddleID, newPosition) {
-    const paddle = document.getElementById(paddleID);
-    const gameArea = document.getElementById('gameArea'); // ID set in HTML for game area
 
-    // Boundary checks to ensure paddles don't move outside the game area
+function movePaddle(paddleElement, newPosition) {
+    // Boundary checks using cached gameArea
     if (newPosition < 0) newPosition = 0;
-    if (newPosition + paddle.clientHeight > gameArea.clientHeight) {
-        newPosition = gameArea.clientHeight - paddle.clientHeight;
+    if (newPosition + paddleElement.clientHeight > gameArea.clientHeight) {
+        newPosition = gameArea.clientHeight - paddleElement.clientHeight;
     }
 
-    paddle.style.top = newPosition + "px";
+    paddleElement.style.top = newPosition + "px";
 }
-
 
 function startGame() {
     console.log("Start button clicked");
+    if (gameRunning) {
+        return; // Exit the function if the game is already running
+    }
+    gameRunning = true; // Set the flag to true
     initializeGame();
     gameInterval = setInterval(gameLoop, 50); // Run gameLoop every 50ms
 }
 
-
 function pauseGame() {
     console.log("Pause button clicked");
+    gameRunning = false; 
     clearInterval(gameInterval);
 }
 
 function resetGame() {
     console.log("Reset button clicked");
+    gameRunning = false; 
     clearInterval(gameInterval);
     initializeGame();
 }
@@ -111,6 +158,11 @@ function gameLoop() {
     handlePaddleMovements();
     handleBallMovement();
     checkWinCondition();
+    
+    if (gameMode === 'AI') {
+        moveAIPaddle();
+        applyAIPaddleMovement();
+    }
 }
 
 
@@ -119,23 +171,25 @@ function handlePaddleMovements() {
 
     // Handle left paddle movement
     if (leftPaddleMoveUp || leftPaddleMoveDown) {
-        let currentPos = parseInt(document.getElementById('leftPaddle').style.top) || 0;
+        let currentPos = parseInt(leftPaddle.style.top) || 0;
         let newPos = leftPaddleMoveUp ? currentPos - PADDLE_SPEED : currentPos + PADDLE_SPEED;
-        movePaddle('leftPaddle', newPos);
+        movePaddle(leftPaddle, newPos);
     }
 
     // Handle right paddle movement
     if (rightPaddleMoveUp || rightPaddleMoveDown) {
-        let currentPos = parseInt(document.getElementById('rightPaddle').style.top) || 0;
+        let currentPos = parseInt(rightPaddle.style.top) || 0;
         let newPos = rightPaddleMoveUp ? currentPos - PADDLE_SPEED : currentPos + PADDLE_SPEED;
-        movePaddle('rightPaddle', newPos);
+        movePaddle(rightPaddle, newPos);
     }
 }
+
 
 // Placeholder for ball movement logic
 function handleBallMovement() {
     // To be implemented in Assignment 3
 }
+
 
 function updateScoreDisplay() {
     // Update displayed scores
@@ -144,9 +198,8 @@ function updateScoreDisplay() {
 }
 
 
-
 // Function to check if either player has met the winning condition
-// The winning conditon might change in Assignment3.
+// Might change in next Iteration.
 function checkWinCondition() {
     if (leftScore >= SCORE_LIMIT) {
         alert('Left Player Wins!');
@@ -164,4 +217,47 @@ function moveBall(newX, newY) {
     const ball = document.getElementById("ball");
     ball.style.left = newX + "px";
     ball.style.top = newY + "px";
+}
+
+
+function toggleGameMode() {
+    if (gameMode === '2P') {
+        gameMode = 'AI';
+        document.getElementById("difficultyModal").style.display = "block";
+    } else {
+        gameMode = '2P';
+        document.getElementById("difficultyModal").style.display = "none";
+    }
+}
+
+
+function setDifficulty(level) {
+    difficulty = level;
+}
+
+
+function moveAIPaddle() {
+    let aiSpeed;
+
+    switch(difficulty) {
+        case 'easy': aiSpeed = 2; break;
+        case 'medium': aiSpeed = 4; break;
+        case 'hard': aiSpeed = 6; break;
+    }
+
+    if (ball.y > aiPaddle.y) {
+        aiPaddle.y += aiSpeed;
+    } else {
+        aiPaddle.y -= aiSpeed;
+    }
+
+    // Ensure AI paddle doesn't move off the screen
+    if (aiPaddle.y < 0) aiPaddle.y = 0;
+    if (aiPaddle.y + rightPaddle.clientHeight > gameArea.clientHeight) {
+        aiPaddle.y = gameArea.clientHeight - rightPaddle.clientHeight;
+    }
+}
+
+function applyAIPaddleMovement() {
+    movePaddle(rightPaddle, aiPaddle.y);
 }

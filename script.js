@@ -30,7 +30,9 @@ const INITIAL_Y_VALUE_FOR_AIPADDLE = 200;
 
 let ball = {
     x: 390, 
-    y: 190
+    y: 190,
+    dx: 3,    
+    dy: 2   
 };
 
 let aiPaddle = {
@@ -185,9 +187,59 @@ function handlePaddleMovements() {
 }
 
 
-// Placeholder for ball movement logic
+// Ball movement logic
 function handleBallMovement() {
-    // To be implemented in Assignment 3
+    ball.x += ball.dx;
+    ball.y += ball.dy;
+
+    // Collision with top wall
+    if (ball.y <= 0) {
+        ball.y = 0;
+        ball.dy = -ball.dy;  // Reverse the Y direction
+    }
+    // Collision with bottom wall
+    if (ball.y + ballElement.clientHeight >= gameArea.clientHeight) {
+        ball.y = gameArea.clientHeight - ballElement.clientHeight;
+        ball.dy = -ball.dy;  // Reverse the Y direction
+    }
+
+
+     // Collision with left paddle
+     if (ball.x <= leftPaddle.offsetLeft + leftPaddle.clientWidth &&
+        ball.y + ballElement.clientHeight >= leftPaddle.offsetTop &&
+        ball.y <= leftPaddle.offsetTop + leftPaddle.clientHeight) {
+        ball.dx = -ball.dx;  // Reverse the X direction
+    }
+
+    // Collision with right paddle
+    if (ball.x + ballElement.clientWidth >= rightPaddle.offsetLeft &&
+        ball.y + ballElement.clientHeight >= rightPaddle.offsetTop &&
+        ball.y <= rightPaddle.offsetTop + rightPaddle.clientHeight) {
+        ball.dx = -ball.dx;  // Reverse the X direction
+    }
+
+
+    // Ball passes the left paddle (Right player scores)
+    if (ball.x <= 0) {
+        rightScore++;
+        updateScoreDisplay();
+        ball.x = 390; // Reset ball to center
+        ball.y = 190;
+        ball.dx = 3;  // Reset ball direction to initial
+        ball.dy = 2;
+    }
+
+    // Ball passes the right paddle (Left player scores)
+    if (ball.x + ballElement.clientWidth >= gameArea.clientWidth) {
+        leftScore++;
+        updateScoreDisplay();
+        ball.x = 390; // Reset ball to center
+        ball.y = 190;
+        ball.dx = -3;  // Reset ball direction to initial but to the left
+        ball.dy = 2;
+    }
+
+    moveBall(ball.x, ball.y);
 }
 
 
@@ -220,13 +272,14 @@ function moveBall(newX, newY) {
 }
 
 
-function toggleGameMode() {
-    if (gameMode === '2P') {
-        gameMode = 'AI';
-        document.getElementById("difficultyModal").style.display = "block";
+function toggleAIDifficulty() {
+    const aiDifficultyDiv = document.getElementById('aiDifficulty');
+
+    // Toggle the display property based on its current value
+    if (aiDifficultyDiv.style.display === "none" || aiDifficultyDiv.style.display === "") {
+        aiDifficultyDiv.style.display = "block";
     } else {
-        gameMode = '2P';
-        document.getElementById("difficultyModal").style.display = "none";
+        aiDifficultyDiv.style.display = "none";
     }
 }
 

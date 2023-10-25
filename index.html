@@ -70,17 +70,20 @@
                     <button id="pauseBtn" onclick="pauseGame()">Pause</button>
                     <button id="resetBtn" onclick="resetGame()">Reset</button>
                   
-                    <!-- Difficulty Modal -->
-                    <div class="dropdown">
-                        <button>AI</button>
+                    <!-- Game Mode Dropdown -->
+                    <div class="dropdown" id="gameModeDropdown">
+                        <button>Game Mode</button>
                         <div class="dropdown-content">
-                            <button>Easy</button>
-                            <button>Medium</button>
-                            <button>Hard</button>
+                            <button id="twoPlayerMode">2 Players</button>
+                            <button id="onePlayerMode" onclick="toggleAIDifficulty()">1 Player (AI)</button>
+                            <div id="aiDifficulty" style="display: none;">
+                                <button>Easy</button>
+                                <button>Medium</button>
+                                <button>Hard</button>
+                            </div>
                         </div>
-                    </div>
 
-                </div>
+                    </div>
 
                 <!-- Theme select -->
                 <select id="themeSelector">

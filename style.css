@@ -59,6 +59,14 @@ body {
     margin-left: 10px; /* Space between player name and score */
 }
 
+.score-limit {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 250px;
+    margin: 10px auto;
+}
+
 .divider {
     width: 2px;
     height: 40px;

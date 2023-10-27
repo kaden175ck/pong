@@ -20,7 +20,7 @@ let rightPaddleMoveDown = false;
 let leftScore = 0;
 let rightScore = 0;
 let gameRunning = false;
-const SCORE_LIMIT = 5;
+let SCORE_LIMIT = 5;
 let gameInterval;  // Interval ID to control game loop
 let gameMode = '2P'; 
 let difficulty = 'easy'; 
@@ -101,6 +101,15 @@ document.addEventListener("DOMContentLoaded", function() {
     document.addEventListener('keydown', handleKeyDown);
     document.addEventListener('keyup', handleKeyUp);
 
+    document.getElementById('setScoreLimit').addEventListener('click', function() {
+        let inputScoreLimit = document.getElementById('scoreLimit').value;
+        if (inputScoreLimit && inputScoreLimit > 0) {
+            SCORE_LIMIT = parseInt(inputScoreLimit);
+            console.log(`New SCORE_LIMIT set: ${SCORE_LIMIT}`);
+        } else {
+            console.log('Invalid input for SCORE_LIMIT');
+        }
+    });
 
 
     // Theme selector event

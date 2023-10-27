@@ -77,9 +77,9 @@
                             <button id="twoPlayerMode">2 Players</button>
                             <button id="onePlayerMode" onclick="toggleAIDifficulty()">1 Player (AI)</button>
                             <div id="aiDifficulty" style="display: none;">
-                                <button>Easy</button>
-                                <button>Medium</button>
-                                <button>Hard</button>
+                                <button id="easyMode">Easy</button>
+                                <button id="mediumMode">Medium</button>
+                                <button id="hardMode">Hard</button>
                             </div>
                         </div>
 
@@ -101,6 +101,15 @@
                     <option value="blue">Blue</option>
                     <option value="green">Green</option>
                 </select>
+
+
+                <div class="speed-control">
+                    <label for="speedSlider">Ball Speed: <span id="speedValue">50</span></label>
+                    <input type="range" id="speedSlider" min="1" max="100" value="50">
+                </div>
+                
+
+
 
                 <!-- Player Indicators -->
                 <div class="player-indicators">

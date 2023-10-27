@@ -58,3 +58,12 @@ Scoring: Mechanisms to keep track of points.
 Collision Detection: Logic to determine when the ball hits a paddle or boundary.
 Game State: Keeping track of whether the game is in a start, play, or end state.
 User Input: Handling user interactions to control paddles or other game elements.
+
+
+In the README.md file, include the following:
+Title: Include the title of your game.
+Target Platform: Specify if the game is designed for desktop, mobile, or both.
+Game Genre: Classify the game (e.g., puzzle, adventure, strategy, etc.).
+Games Objective: Clearly state the primary goal the player needs to achieve, to win or to progress.
+Rules of the Game: Briefly explain the rules, penalties, bonuses, or special conditions.
+Game Mechanics: Describe the primary actions the players will perform.

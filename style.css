@@ -303,7 +303,20 @@ button:hover {
     box-shadow: 0 0 10px #007BFF;
 }
 
+.speed-control {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
 
+#speedSlider {
+    margin-left: 10px;
+    width: 150px;
+}
 
 
 

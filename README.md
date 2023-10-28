@@ -67,3 +67,13 @@ Game Genre: Classify the game (e.g., puzzle, adventure, strategy, etc.).
 Games Objective: Clearly state the primary goal the player needs to achieve, to win or to progress.
 Rules of the Game: Briefly explain the rules, penalties, bonuses, or special conditions.
 Game Mechanics: Describe the primary actions the players will perform.
+
+
+
+Custom Animations
+Introduce animations that enhance the gameplay experience. This might include animations for player movements, transitions between game states, or visual feedback based on player actions.
+Custom Interaction Mechanism
+Implement a custom collision detection mechanism if your game involves moving and interacting elements. If your chosen game concept (e.g., Chess, Sudoku) doesn't inherently involve collisions, focus on another complex interaction mechanism. For a chess game, this might be the logic to determine legal moves for each piece or a mechanism to check for check and checkmate scenarios.
+Custom Algorithms
+Implement algorithms that drive the gameplay. This could be path-finding for games that involve navigation, sorting algorithms for scoreboards, or any other game-specific algorithm.
+Note: Make the marker’s life easier by identifying these sections in your code.

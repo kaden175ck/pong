@@ -1,7 +1,7 @@
 /*
  Course: SENG 513 
- Date: OCT 16, 2023 
- Assignment 2 
+ Date: OCT 30, 2023 
+ Assignment 3
  Name: Haoyang Shi 
  UCID: 30105296 
 
@@ -9,7 +9,6 @@
     ............
     see pictures details in Readme file
 */
-
 
 
 /* General styles */
@@ -39,24 +38,25 @@ body {
 /* Scoreboard styles */
 .scoreboard {
     display: flex;
-    justify-content: center; /* Center align the score items */
-    align-items: center; /* Vertically center everything */
+    justify-content: center; 
+    align-items: center; 
     font-size: 24px;
     margin-bottom: 20px;
-    width: 100%; /* Take up full width */
+    width: 100%; 
 }
 
 .score-item {
     display: flex;
     align-items: center;
-    flex: 1; /* This will ensure each score item takes half of the scoreboard width */
+    flex: 1; 
     justify-content: center;
 }
 
 .player-score {
-    font-size: 32px; /* Increased font size */
-    font-weight: bold; /* Make score bold */
-    margin-left: 10px; /* Space between player name and score */
+    font-size: 3em; 
+    font-weight: bold;
+    margin-left: 10px;
+    text-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;  
 }
 
 .score-limit {
@@ -71,7 +71,8 @@ body {
     width: 2px;
     height: 40px;
     background-color: #000;
-    margin: 0 20px; /* Margin on left and right for spacing */
+    margin: 0 20px; 
+    box-shadow: 0 0 10px #00ff00, 0 0 20px #00ff00;
 }
 
 
@@ -87,7 +88,6 @@ body {
     border: 3px solid #000;
     animation: pulsate 1.5s infinite;
 }
-
 
 #gameArea.dino {
     background-image: url('dinoback.jpg');
@@ -105,40 +105,43 @@ body {
     background-image: url('hockey.jpg');
 }
 
-
 .button-container {
     display: flex;
-    justify-content: center; /* Horizontally center-align the buttons */
-    align-items: center;     /* Vertically center-align the buttons */
-    margin: 20px 0;          /* Give some space above and below the buttons */
+    justify-content: center; 
+    align-items: center;     
+    margin: 20px 0;          
 }
 
+@keyframes breatheAnimation {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
 
 
 /* Paddle styles */
 .paddle {
-    width: 30px;
-    height: 150px;
-    position: absolute;
-}
-
-/* Styles for paddle images */
-.paddle-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover; /* Image covers the entire paddle without stretching*/
+    width: 20px; 
+    height: 100px; 
+    background-color: #ffffff; 
+    border: 2px solid #000000; 
+    border-radius: 10px; 
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.5); 
+    position: absolute; 
+    animation: breatheAnimation 2s infinite ease-in-out;
 }
 
 #leftPaddle {
-
-    top: 125px;
-    left: 10px; 
+    left: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: #FF6347; 
 }
 
 #rightPaddle {
-
-    top: 125px;
-    right: 10px; 
+    right: 0; 
+    top: 50%; 
+    transform: translateY(-50%); 
+    background-color: #4682B4; 
 }
 
 /* Ball styles */
@@ -146,35 +149,44 @@ body {
     width: 20px;
     height: 20px;
     background-color: black;
-    border-radius: 50%; /* makes it a circle */
+    border-radius: 50%; 
     position: absolute;
     top: 190px;
     left: 390px;
+    animation: pulse 2s infinite;
+    box-shadow: 0 0 15px rgba(0,0,0,0.6);
 }
 
+/* To animate the shadow */
+.ball-moving { 
+    box-shadow: 0 0 20px rgba(0,0,0,0.9);
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
 
 /* Style for ball color selector */
 #ballColorSelector {
-    margin: 10px; /* margin around it */
-    border-radius: 4px; /* rounded corners */
-    border: 1px solid #007BFF; /* a blue border to match the button styling */
+    margin: 10px; 
+    border-radius: 4px; 
+    border: 1px solid #007BFF; 
 }
-
-
 
 /* Style for theme selector */
 #themeSelector {
-    margin: 10px; /* margin around it */
-    border-radius: 4px; /* rounded corners */
-    border: 1px solid #007BFF; /* a blue border to match the button styling */
+    margin: 10px; 
+    border-radius: 4px; 
+    border: 1px solid #007BFF; 
 }
-
 
 /* Controls styles */
 .controls {
     margin-top: 20px;
     display: flex;
-    align-items: center; /* This will vertically center-align the child elements */
+    align-items: center; 
     justify-content: center;
 }
 
@@ -183,10 +195,10 @@ button {
     padding: 10px 20px;
     border: none;
     border-radius: 4px;
-    background-color: transparent; /*changed to transparent*/
+    background-color: transparent; 
     color: #007BFF;
     cursor: pointer;
-    transition: background-color 0.3s ease, color 0.3s ease; /* color transition */
+    transition: background-color 0.3s ease, color 0.3s ease; 
 }
 
 button, select {
@@ -223,22 +235,19 @@ button:hover {
 .dropdown {
     position: relative;
     display: inline-block;
-    vertical-align: middle; /* this ensures that the dropdown aligns with other inline elements */
+    vertical-align: middle; 
     margin-left: 10px;
 }
-
 
 /* Enhanced Dropdown Styles */
 .dropdown-content {
     position: absolute;
-    top: 100%; /* places the content right below the button */
+    top: 100%; 
     left: 0;
     transition: opacity 0.3s ease, transform 0.3s ease;
     transform: translateY(-10px);
     opacity: 0;
 }
-
-
 
 .dropdown-content a {
     color: black;
@@ -250,7 +259,6 @@ button:hover {
 .dropdown-content a:hover {
     background-color: #f1f1f1;
 }
-
 
 .dropdown:hover .dropdown-content {
     display: block;
@@ -281,15 +289,6 @@ button:hover {
 
 .controls-container {
     margin-top: 20px;
-}
-
-/* Positioning dropdowns in the upper right corner */
-.dropdown-container {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px; /* Space between the two dropdowns */
 }
 
 /* Pulsating Glow Effect around the Game Area */
@@ -326,33 +325,37 @@ button:hover {
     width: 150px;
 }
 
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.85);
+    z-index: 1000;
+}
 
+.overlay-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
 
+#winnerAnnouncement {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
 
-/* Media query for smaller screens */
-@media (max-width: 850px) {
-    .game-container {
-        width: 400px;
-        padding: 0 10px; /* some padding on the sides*/
-    }
+#speedSlider, #speedValue, #scoreLimitSelector {
+    display: inline-block;
+    margin-right: 20px;
+}
 
-    #gameArea {
-        width: 400px;
-        height: 50vw;/*make height proportional to width*/
-    }
-
-    .scoreboard .player-score {
-        font-size: 18px;
-    }
-
-    /* Adjustments for smaller screens */
-    .paddle {
-        width: 15px;
-        height: 75px;
-    }
-    
-    .ball {
-        width: 20px;
-        height: 20px;
-    }
+.highlighted {
+    background-color: yellow; 
+    color: black; 
 }

@@ -1,79 +1,85 @@
-Author: Haoyang Shi
-TUT01
-This browser-based game was developed using vanilla HTML, CSS, and JavaScript.
+# Pong Game
 
-    All pictures download from https://unsplash.com, and meet the CC0 criteria
+This is a browser-based version of the classic Pong game, recreated using vanilla HTML, CSS, and JavaScript. No canvas is used in the development of this game.
 
-    Source and Credit:
-    dinoback:Photo by Blanca Paloma Sánchez on Unsplash
-    Favicon: Photo by Everyday basics on Unsplash
-    minidino:Photo by <a href="https://unsplash.com/@jiangxulei1990?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">青 晨</a> on <a href="https://unsplash.com/photos/brown-and-white-eggs-eIzzzwtkBjU?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>  
-    Hockey:Photo by <a href="https://unsplash.com/@chrisliverani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Liverani</a> on <a href="https://unsplash.com/photos/red-and-white-hockey-goal-5oZ9uVx7buc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-    Football: https://unsplash.com/photos/aerial-view-of-football-field-deGn9vSwXIM
-    racing: Photo by <a href="https://unsplash.com/@aj5tdt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anders J</a> on <a href="https://unsplash.com/photos/red-and-white-wooden-wall-MekXOhHQVY4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+## Author
 
+Haoyang Shi - TUT01
 
+## Project Overview
 
-HOW TO RUN THE GAME:
-Clone or download this repository to your local machine.
-Navigate to the project directory.
-Open the index.html file in your preferred web browser.
+Pong is an arcade-style game that simulates table tennis. Players control paddles on the screen to hit a ball back and forth. The goal is to outmaneuver your opponent and be the first to reach a predetermined number of points.
 
+### How to Run the Game
 
+To play the game locally:
 
-Plan for Assignment 3(TBD):
-1. Collision Detection
-2. Game Logic
-3. AI Player
-4. Rules section(Button)
-5. Set final score button
-6. Game mode button
-7. Ball Speed button
-8. Paddle Speed button
-9.  EGG Lives animation?
+1. Clone or download this repository to your local machine.
+2. Navigate to the project directory.
+3. Open the `index.html` file in your preferred web browser.
 
+## Game Overview
 
+- **Title**: Pong
+- **Target Platform**: Desktop browsers
+- **Game Genre**: Arcade, Sports
+- **Objective**: Score points by getting the ball past the opponent's paddle. The first player to reach a predetermined score, such as 10 points, wins the game.
 
+## Rules
 
-                                    CURRENT GAME OVERVIEW
+- Each player controls a paddle using keyboard inputs.
+- Players earn a point when the ball passes their opponent's paddle.
+- Players can speed up the ball during play for added challenge.
+- The game continues until one player reaches the winning score.
 
+## Game Mechanics
 
+- **Paddle Movement**: Paddles move vertically along the game area's edges, controlled by the players.
+- **Ball Movement**: The ball moves across the game area, bouncing off the walls and paddles.
+- **Scoring System**: Points are tracked and displayed on screen.
+- **Collision Detection**: Determines when the ball makes contact with paddles or boundaries.
+- **Game States**: The game can be in a start, play, or end state, each with appropriate displays and controls.
 
-Title: Pong
-Target Platform: Desktop 
-Game Genre: Arcade, Sports
-Game's Objective: To score points by getting the ball past the opponent's paddle. 
-The player who first reaches a predetermined score (e.g., 10 points) wins the game. TBD
+### Note
 
-Rules of the Game:
-Each player controls a paddle.
-Players earn a point each time they get the ball past their opponent.
-If the ball goes past a player's paddle, the opposing player earns a point.
-First player to reach the predetermined score wins.
+Please refer to the in-code comments that identify the sections for animations, interaction mechanisms, and custom algorithms.
 
-Game Mechanics:
-Paddle Movement: Variables to control the movement of paddles(Up and Down)
-Ball Movement: Logic for how the ball moves around the game area, including bouncing off walls and paddles.
-Scoring: Mechanisms to keep track of points.
-Collision Detection: Logic to determine when the ball hits a paddle or boundary.
-Game State: Keeping track of whether the game is in a start, play, or end state.
-User Input: Handling user interactions to control paddles or other game elements.
+## Custom Features
+
+- **Animations**: Smooth and engaging animations for paddle movement and scoring.
+- **Interaction Mechanism**: Custom collision detection to handle the ball and paddle interactions effectively.
+- **Algorithms**: Game logic for ball movement, scoring, and paddle control.
 
 
-In the README.md file, include the following:
-Title: Include the title of your game.
-Target Platform: Specify if the game is designed for desktop, mobile, or both.
-Game Genre: Classify the game (e.g., puzzle, adventure, strategy, etc.).
-Games Objective: Clearly state the primary goal the player needs to achieve, to win or to progress.
-Rules of the Game: Briefly explain the rules, penalties, bonuses, or special conditions.
-Game Mechanics: Describe the primary actions the players will perform.
+## Assets Credits
+
+All images downloaded from Unsplash are under the CC0 license, free for personal and commercial use.
+
+dinoback:Photo by Blanca Paloma Sánchez on Unsplash
+Favicon: Photo by Everyday basics on Unsplash
+Hockey:Photo by <a href="https://unsplash.com/@chrisliverani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Liverani</a> on <a href="https://unsplash.com/photos/red-and-white-hockey-goal-5oZ9uVx7buc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+Football: https://unsplash.com/photos/aerial-view-of-football-field-deGn9vSwXIM
+racing: Photo by <a href="https://unsplash.com/@aj5tdt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anders J</a> on <a href="https://unsplash.com/photos/red-and-white-wooden-wall-MekXOhHQVY4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 
 
 
-Custom Animations
+
+
+
+
+
+
+
+
+
+Custom Animations:
 Introduce animations that enhance the gameplay experience. This might include animations for player movements, transitions between game states, or visual feedback based on player actions.
-Custom Interaction Mechanism
+
+Custom Interaction Mechanism:
 Implement a custom collision detection mechanism if your game involves moving and interacting elements. If your chosen game concept (e.g., Chess, Sudoku) doesn't inherently involve collisions, focus on another complex interaction mechanism. For a chess game, this might be the logic to determine legal moves for each piece or a mechanism to check for check and checkmate scenarios.
-Custom Algorithms
+
+Custom Algorithms:
 Implement algorithms that drive the gameplay. This could be path-finding for games that involve navigation, sorting algorithms for scoreboards, or any other game-specific algorithm.
+
 Note: Make the marker’s life easier by identifying these sections in your code.
+

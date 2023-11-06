@@ -1,6 +1,6 @@
 <!-- Course: SENG 513 -->
-<!-- Date: OCT 16, 2023 -->
-<!-- Assignment 2 -->
+<!-- Date: OCT 30, 2023 -->
+<!-- Assignment 3 -->
 <!-- Name: Haoyang Shi -->
 <!-- UCID: 30105296 -->
 <!--
@@ -45,6 +45,18 @@
                 </div>
             </div>
 
+            <div id="gameOverlay" class="overlay">
+                <div class="overlay-content">
+                    <p id="winnerAnnouncement"></p>
+                    <button id="playAgainBtn">Play Again</button>
+                </div>
+            </div>
+
+            <!-- Moved Ball Speed Control Up -->
+            <div class="speed-control">
+                <label for="speedSlider">Ball Speed: <span id="speedValue">50</span></label>
+                <input type="range" id="speedSlider" min="1" max="100" value="50">
+            </div>
 
             <!-- Score Limit -->
             <div class="score-limit">
@@ -53,18 +65,14 @@
                 <button id="setScoreLimit">Set</button>
             </div>
 
-
-
             <!-- Game Area -->
             <div id="gameArea">
                 <!-- Left Paddle -->
                 <div id="leftPaddle" class="paddle">
-                    <img src="minidino.jpg" alt="Left paddle" class="paddle-img">
                 </div>
 
                 <!-- Right Paddle -->
                 <div id="rightPaddle" class="paddle">
-                    <img src="minidino.jpg" alt="Right paddle" class="paddle-img">
                 </div>
 
                 <!-- Ball -->
@@ -92,7 +100,6 @@
                                 <button id="hardMode">Hard</button>
                             </div>
                         </div>
-
                     </div>
 
                 <!-- Theme select -->
@@ -111,15 +118,6 @@
                     <option value="blue">Blue</option>
                     <option value="green">Green</option>
                 </select>
-
-
-                <div class="speed-control">
-                    <label for="speedSlider">Ball Speed: <span id="speedValue">50</span></label>
-                    <input type="range" id="speedSlider" min="1" max="100" value="50">
-                </div>
-                
-
-
 
                 <!-- Player Indicators -->
                 <div class="player-indicators">

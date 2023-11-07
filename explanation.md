@@ -1,8 +1,7 @@
 # Pong Game - Code Explanation
 
 ### Note
-
-Please refer to the in-code comments for more details if this document is not details enough
+### Please refer to the in-code comments for more details if this document is not detail enough
 
 ## Overall JS Logic
 

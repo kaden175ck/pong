@@ -2,65 +2,49 @@
 
 ## Overall Logic
 
-### Initialization (`initializeGame` function)
+## Initialization
 
-- Sets initial scores to 0 and updates the score display.
-- Establishes initial positions for paddles and the ball.
-- In '1P' mode, sets AI paddle position and speed according to the difficulty level chosen (easy, medium, hard).
+The `initializeGame()` function resets the game to its initial state. It sets scores to zero and positions the ball and paddles. For 1-Player mode, it sets the AI paddle's position and speed based on the difficulty level.
 
-### DOM Content Loaded Event
+## Event Listeners
 
-- Caches elements like paddles and ball for easy reference upon full DOM load.
-- Sets event listeners for game controls (start, pause, reset), keyboard inputs, and customization options (score limit, theme, ball color).
-- `playAgainBtn` calls `initializeGame` to reset the game.
+Event listeners are attached to DOM elements for game controls (start, pause, reset), keyboard controls for paddle movement, difficulty selection, speed adjustment, and theme customization. These ensure interactive gameplay and allow the player to customize various aspects of the game.
 
-### Keyboard Control
+## Paddle Movement
 
-- `handleKeyDown` and `handleKeyUp` functions set movement flags for paddle control based on key events.
+`handleKeyDown()` and `handleKeyUp()` functions track when a player presses and releases keys to move the paddles. They prevent default scrolling of the webpage when these keys are pressed.
 
-### Game Control
+## Game Control Functions
 
-- `startGame` function begins the game loop with `requestAnimationFrame`.
-- `pauseGame` function stops the game loop.
-- `resetGame` function reloads the page, resetting the game.
+- `startGame()`: Begins the game loop using `requestAnimationFrame`.
+- `pauseGame()`: Pauses the game by setting `gameRunning` to false.
+- `resetGame()`: Reloads the page, effectively resetting the entire game.
 
-### Game Loop (`gameLoop` function)
+## Game Loop
 
-- Manages paddle and ball movements, collision detection, and checks for win conditions.
-- In '1P' mode, executes AI paddle movement.
-- Recursively calls itself for a continuous loop via `requestAnimationFrame`.
+`gameLoop()` is the core loop that runs while the game is active. It handles paddle movements, ball movement, AI logic, and win conditions. If it's a 1-Player game, it also moves the AI paddle.
 
-### Utility Functions
+## Ball and Paddle Movement Logic
 
-- `movePaddle` and `moveBall` handle respective element movements within game bounds.
-- `clearHighlightsAndHideDropdown` resets UI elements.
+- `handleBallMovement()`: Updates the ball's position, checks for collisions with walls and paddles, and updates scores if the ball passes a paddle.
+- `moveAIPaddle()`: Contains logic for moving the AI paddle based on the ball's position and the selected difficulty.
+- `movePaddle(paddleElement, newYPosition)`: Moves a given paddle to a new Y position within the boundaries of the game area.
 
-## Most Complex Part - AI Logic
+## Helper Functions
 
-### AI Paddle Positioning
+`clearHighlightsAndHideDropdown()`: Utility function to clear button highlights and hide the dropdown menu for game mode and difficulty selection.
 
-- AI paddle tracks the ball (`ball.y`) and predicts where to meet the ball on its side.
+## Collision Detection and Scoring
 
-### Difficulty Levels (`moveAIPaddle` function)
+- Ball-paddle collision is detected using positions and sizes of the paddles and the ball.
+- Scoring is handled by checking if the ball has passed the left or right edges of the play area.
 
-- Adjusts the AI's prediction mechanics based on difficulty settings:
-  - 'Easy': Follows the ball directly without prediction.
-  - 'Medium': Predicts where the ball will be after 30 frames.
-  - 'Hard': Predicts where the ball will be after 60 frames.
+## AI Paddle Logic
 
-### Prediction Mechanism
+- The AI paddle's movement is determined by predicting where the ball will be when it reaches the paddle's X position.
+- The level of prediction and the speed of the AI paddle's movement are adjusted based on the selected difficulty.
 
-- Predicts the ball's future position by considering its current speed and direction (`ball.dy`).
-- The predictive factor (30 or 60) simulates foresight by estimating the ball's vertical position in the near future.
+## Theme and Ball Color Selection
 
-### Movement Logic
+The code allows players to select themes and ball colors dynamically, which are applied to the game area and the ball respectively.
 
-- The AI paddle moves up or down to align its center with the predicted ball position (`predictY`).
-
-### Speed Adjustment
-
-- The AI paddle's speed (`aiSpeed`) is variable and correlates with the game's difficulty level, influencing how quickly the paddle can reposition.
-
-### Positioning Restrictions (`applyAIPaddleMovement`)
-
-- Ensures AI paddle remains within the vertical limits of the play area to prevent it from moving off-screen.

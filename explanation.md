@@ -1,4 +1,4 @@
-# Pong Game - Code Explanation
+# Pong Game - Code Explanation(JS,HTML,CSS)
 
 ### Note
 ### Please refer to the in-code comments for more details if this document is not detail enough
@@ -7,15 +7,10 @@
 
 ## Table of Contents
 
-- [Game Features](#game-features)
-- [How to Play](#how-to-play)
-- [Complex JavaScript Usage](#complex-javascript-usage)
   - [Game Initialization](#game-initialization)
   - [Game Loop](#game-loop)
   - [AI Paddle Movement](#ai-paddle-movement)
   - [Ball Movement and Collision Detection](#ball-movement-and-collision-detection)
-- [Getting Started](#getting-started)
-- [Contributing](#contributing)
 
 ### Game Initialization
 

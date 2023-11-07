@@ -46,11 +46,13 @@ To play the game locally:
 - **Collision Detection**: Determines when the ball makes contact with paddles or boundaries.
 - **Game States**: The game can be in a start, play, or end state, each with appropriate displays and controls.
 
+
+
+## Custom Features
+
 ### Note
 
 Please refer to the in-code comments that identify the sections for animations, interaction mechanisms, and custom algorithms.
-
-## Custom Features
 
 - **Animations**: Smooth and engaging animations for paddle movement and scoring.
 - **Interaction Mechanism**: Custom collision detection to handle the ball and paddle interactions effectively.

@@ -302,7 +302,7 @@ function handlePaddleMovements() {
 }
 
 
-// Ball movement logic
+// Custom algorithms: Ball movement logic
 function handleBallMovement() {
     ball.x += ball.dx;
     ball.y += ball.dy;
@@ -336,20 +336,21 @@ function handleBallMovement() {
     if (ball.x <= 0) {
         rightScore++;
         updateScoreDisplay();
-        resetBall(390, 190, 3, 2);  // Use initial values
+        resetBall(390, 190, 3, 2);  
     }
 
     // Ball passes the right paddle (Left player scores)
     if (ball.x + ballElement.clientWidth >= gameArea.clientWidth) {
         leftScore++;
         updateScoreDisplay();
-        resetBall(390, 190, -3, 2);  // Use initial values but with negative dx
+        resetBall(390, 190, -3, 2);  
     }
 
     moveBall(ball.x, ball.y);
 }
 
 
+// Custom algorithms
 function moveAIPaddle() {
     let ballCenter = ball.y + 5; 
     let aiPaddleCenter = aiPaddle.y + 25; 

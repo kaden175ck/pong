@@ -1,3 +1,9 @@
+# Guide
+
+README.md contains general information about the project
+explanation.md contains detail code explanation
+reflect.md contains the development process and thinking process.
+
 # Pong Game
 
 This is a browser-based version of the classic Pong game, recreated using vanilla HTML, CSS, and JavaScript. No canvas is used in the development of this game.

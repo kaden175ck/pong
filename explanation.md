@@ -98,9 +98,9 @@ The AI will use a simple heuristic-based approach to determine the paddle's move
 
 
 
-### Some not complex HTML Concepts in the Project
+## Some not complex HTML Concepts in the Project
 
-## Structure Overview
+### Structure Overview
 The HTML structure is composed of several main components within a `game-container`. These components are:
 - Game Area Container
 - Scoreboard
@@ -111,7 +111,7 @@ The HTML structure is composed of several main components within a `game-contain
 
 Each of these components has specific roles.
 
-## Custom Overlay for Game Pauses and Endings
+### Custom Overlay for Game Pauses and Endings
 An overlay is used to pause the game and display messages such as the winner announcement. 
 - It uses a div with an ID `gameOverlay` that can be shown or hidden via JavaScript.
 - Contains a button to play again, allowing users to restart the game after it ends.

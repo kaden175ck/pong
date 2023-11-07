@@ -52,19 +52,19 @@ To play the game locally:
 
 ### Note
 
-Please refer to the in-code comments that identify the sections for animations, interaction mechanisms, and custom algorithms.
+Please refer to the in-code comments or EXPLANATION.md for details animations, interaction mechanisms, and custom algorithms.
 
-- **Animations**: Smooth and engaging animations for paddle movement and scoring.
+- **Animations**: Smooth and engaging animations for paddle movement, game board and scoring.
 - **Interaction Mechanism**: Custom collision detection to handle the ball and paddle interactions effectively.
-- **Algorithms**: Game logic for ball movement, scoring, and paddle control.
+- **Algorithms**: Game logic for AI player, ball movement, scoring, and paddle control.
 
 
 ## Assets Credits
 
 All images downloaded from Unsplash are under the CC0 license, free for personal and commercial use.
 
-dinoback:Photo by Blanca Paloma Sánchez on Unsplash
-Favicon: Photo by Everyday basics on Unsplash
-Hockey:Photo by <a href="https://unsplash.com/@chrisliverani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Liverani</a> on <a href="https://unsplash.com/photos/red-and-white-hockey-goal-5oZ9uVx7buc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-Football: https://unsplash.com/photos/aerial-view-of-football-field-deGn9vSwXIM
-racing: Photo by <a href="https://unsplash.com/@aj5tdt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anders J</a> on <a href="https://unsplash.com/photos/red-and-white-wooden-wall-MekXOhHQVY4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- dinoback:Photo by Blanca Paloma Sánchez on Unsplash
+- Favicon: Photo by Everyday basics on Unsplash
+- Hockey:Photo by <a href="https://unsplash.com/@chrisliverani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Liverani</a> on <a href="https://unsplash.com/photos/red-and-white-hockey-goal-5oZ9uVx7buc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
+- Football: https://unsplash.com/photos/aerial-view-of-football-field-deGn9vSwXIM
+- racing: Photo by <a href="https://unsplash.com/@aj5tdt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anders J</a> on <a href="https://unsplash.com/photos/red-and-white-wooden-wall-MekXOhHQVY4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>

@@ -1,8 +1,8 @@
-# Guide
+# Guide for TA
 
-- README.md contains general information about the project.
-- explanation.md contains detail code explanation.
-- reflect.md contains the development process and thinking process.
+- README.md - This file provides an overview of the project, including its purpose, how to set it up, and how to use it.
+- explanation.md - Here, you'll find detailed explanations of the codebase, including how the algorithms work and the reasoning behind certain coding decisions.
+- reflect.md - This document captures our development journey, discussing both the process of building the project and the thought process that guided our decisions.
 
 # Pong Game
 

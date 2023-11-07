@@ -118,16 +118,16 @@ An overlay is used to pause the game and display messages such as the winner ann
 
 
 
-### Complex and custom CSS Concepts in the Project
+## Complex and custom CSS Concepts in the Project
 
-## Complex Selectors for Targeting Elements
+### Complex Selectors for Targeting Elements
 - Descendant selectors like `#gameArea.dino` target the element with `id="gameArea"` that also has a class of `.dino`, allowing us to change the background image depending on the game mode.
 - Attribute selectors like `[type="range"]` could be used to style all `<input>` elements of the type range.
 
-## CSS Animations and Keyframes
+### CSS Animations and Keyframes
 - `@keyframes` define the animation sequence, such as `pulsate` which creates a glowing effect around the `#gameArea`.
 - `animation: pulse 2s infinite;` applied to `.ball` gives it a pulsating effect, mimicking a heartbeat.
 
-## Custom Properties for Theming and Shadows
+### Custom Properties for Theming and Shadows
 - `var(--main-color)` could be defined to standardize the main color theme and easily adapt it by changing the variable.
 - The `--main-text-shadow` and `--button-shadow` properties are used to apply consistent shadows across text and buttons, adding depth to the elements. For example, shadows are applied to the `.score-item` and `.divider` for a neon glow effect.

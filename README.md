@@ -1,8 +1,8 @@
 # Guide for TA
 
 - README.md - This file provides an overview of the project, including its purpose, how to set it up, and how to use it.
-- explanation.md - Here, you'll find detailed explanations of the codebase, including how the algorithms work and the reasoning behind certain coding decisions.
-- reflect.md - This document captures our development journey, discussing both the process of building the project and the thought process that guided our decisions.
+- EXPLANATION.md - Here, you'll find detailed explanations of the codebase, including how the algorithms work and the reasoning behind certain coding decisions.
+- REFLECT.md - This document captures my development journey, discussing both the process of building the project and the thought process that guided my decisions.
 
 # Pong Game
 
@@ -66,26 +66,3 @@ Favicon: Photo by Everyday basics on Unsplash
 Hockey:Photo by <a href="https://unsplash.com/@chrisliverani?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Chris Liverani</a> on <a href="https://unsplash.com/photos/red-and-white-hockey-goal-5oZ9uVx7buc?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
 Football: https://unsplash.com/photos/aerial-view-of-football-field-deGn9vSwXIM
 racing: Photo by <a href="https://unsplash.com/@aj5tdt?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Anders J</a> on <a href="https://unsplash.com/photos/red-and-white-wooden-wall-MekXOhHQVY4?utm_content=creditCopyText&utm_medium=referral&utm_source=unsplash">Unsplash</a>
-
-
-
-
-
-
-
-
-
-
-
-
-Custom Animations:
-Introduce animations that enhance the gameplay experience. This might include animations for player movements, transitions between game states, or visual feedback based on player actions.
-
-Custom Interaction Mechanism:
-Implement a custom collision detection mechanism if your game involves moving and interacting elements. If your chosen game concept (e.g., Chess, Sudoku) doesn't inherently involve collisions, focus on another complex interaction mechanism. For a chess game, this might be the logic to determine legal moves for each piece or a mechanism to check for check and checkmate scenarios.
-
-Custom Algorithms:
-Implement algorithms that drive the gameplay. This could be path-finding for games that involve navigation, sorting algorithms for scoreboards, or any other game-specific algorithm.
-
-Note: Make the marker’s life easier by identifying these sections in your code.
-

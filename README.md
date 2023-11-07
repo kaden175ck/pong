@@ -1,8 +1,8 @@
 # Guide
 
-README.md contains general information about the project
-explanation.md contains detail code explanation
-reflect.md contains the development process and thinking process.
+- README.md contains general information about the project.
+- explanation.md contains detail code explanation.
+- reflect.md contains the development process and thinking process.
 
 # Pong Game
 

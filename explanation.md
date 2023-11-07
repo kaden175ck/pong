@@ -28,21 +28,22 @@ The `gameLoop` function is called continuously using `requestAnimationFrame`. It
 - AI paddle movement if in '1P' mode.
 - Checking for the win condition.
 
-### AI Paddle Movement
+### Custom AI Paddle Movement
 
 - The `moveAIPaddle` function contains logic to move the AI paddle in response to the ball's movement.
 - Depending on the difficulty, the AI anticipates the ball's future position using a predictive algorithm.
+- The AI paddle tracks the ball by adjusting its position (`y`) to align with a predicted y-coordinate of the ball (`predictY`). This prediction changes based on the difficulty level set, with `easy` difficulty having no prediction and just following the ball's current `y`, `medium` difficulty predicting some frames ahead, and `hard` difficulty predicting even further ahead to simulate a more challenging opponent.
 
 ### Ball Movement and Collision Detection
 
 - The `handleBallMovement` function controls the ball's physics, including reflection angles upon hitting walls or paddles.
 - Collision detection with paddles is done using position checks and updating the direction of the ball's movement when a collision is detected.
 
+### Win Condition
+- The `checkWinCondition` function presumably checks if the score limit has been reached and then takes necessary actions to end the game and announce the winner.
 
-
-
-
-
+### Game Reset
+-`resetGame` reloads the page to start over, and `resetBall` places the ball back in the center with initial velocities after a score.
 
 
 

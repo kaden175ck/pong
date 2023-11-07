@@ -3,98 +3,54 @@
 ### Note
 ### Please refer to the in-code comments for more details if this document is not detail enough
 
-## Overall JS Logic
+## Complex JavaScript Usage
 
-## Initialization
+## Table of Contents
 
-The `initializeGame()` function resets the game to its initial state. It sets scores to zero and positions the ball and paddles. For 1-Player mode, it sets the AI paddle's position and speed based on the difficulty level.
+- [Game Features](#game-features)
+- [How to Play](#how-to-play)
+- [Complex JavaScript Usage](#complex-javascript-usage)
+  - [Game Initialization](#game-initialization)
+  - [Game Loop](#game-loop)
+  - [AI Paddle Movement](#ai-paddle-movement)
+  - [Ball Movement and Collision Detection](#ball-movement-and-collision-detection)
+- [Getting Started](#getting-started)
+- [Contributing](#contributing)
 
-## Event Listeners
+### Game Initialization
 
-Event listeners are attached to DOM elements for game controls (start, pause, reset), keyboard controls for paddle movement, difficulty selection, speed adjustment, and theme customization. These ensure interactive gameplay and allow the player to customize various aspects of the game.
+The `initializeGame` function sets up the initial state of the game, including paddle positions and scores. It distinguishes between the two modes and sets the AI speed based on difficulty:
 
-## Paddle Movement
+- The `gameMode` variable controls whether the game will run in '1P' or '2P' mode.
+- In '1P' mode, the `aiPaddle` object is positioned, and its speed is adjusted as per the selected difficulty.
 
-`handleKeyDown()` and `handleKeyUp()` functions track when a player presses and releases keys to move the paddles. They prevent default scrolling of the webpage when these keys are pressed.
+### Game Loop
 
-## Game Control Functions
+The `gameLoop` function is called continuously using `requestAnimationFrame`. It updates the game state at every frame and handles:
 
-- `startGame()`: Begins the game loop using `requestAnimationFrame`.
-- `pauseGame()`: Pauses the game by setting `gameRunning` to false.
-- `resetGame()`: Reloads the page, effectively resetting the entire game.
+- Paddle movements based on user input flags (`leftPaddleMoveUp`, `rightPaddleMoveDown`, etc.)
+- Ball movement by updating its position (`ball.x` and `ball.y`) and detecting wall collisions.
+- AI paddle movement if in '1P' mode.
+- Checking for the win condition.
 
-## Game Loop
+### AI Paddle Movement
 
-`gameLoop()` is the core loop that runs while the game is active. It handles paddle movements, ball movement, AI logic, and win conditions. If it's a 1-Player game, it also moves the AI paddle.
+- The `moveAIPaddle` function contains logic to move the AI paddle in response to the ball's movement.
+- Depending on the difficulty, the AI anticipates the ball's future position using a predictive algorithm.
 
-## Ball and Paddle Movement Logic
+### Ball Movement and Collision Detection
 
-- `handleBallMovement()`: Updates the ball's position, checks for collisions with walls and paddles, and updates scores if the ball passes a paddle.
-- `moveAIPaddle()`: Contains logic for moving the AI paddle based on the ball's position and the selected difficulty.
-- `movePaddle(paddleElement, newYPosition)`: Moves a given paddle to a new Y position within the boundaries of the game area.
+- The `handleBallMovement` function controls the ball's physics, including reflection angles upon hitting walls or paddles.
+- Collision detection with paddles is done using position checks and updating the direction of the ball's movement when a collision is detected.
 
 
-## Collision Detection and Scoring
 
-- Ball-paddle collision is detected using positions and sizes of the paddles and the ball.
-- Scoring is handled by checking if the ball has passed the left or right edges of the play area.
 
-# Pong AI Opponent Development
 
-When developing the AI opponent for a Pong game, the primary goal is to create an automated paddle that behaves like a human player, offering a challenging and engaging experience for the player. This document outlines the thought process and considerations involved in developing such an AI.
 
-## Objectives
 
-1. **Reactivity**: The AI should be responsive enough to provide a challenge but not so perfect that it's unbeatable.
-2. **Adaptability**: It must adapt to changes in the ball's speed and direction.
-3. **Scalable Difficulty**: There should be varying levels of difficulty that players can choose from.
 
-## Strategy
 
-The AI will use a simple heuristic-based approach to determine the paddle's movement. It doesn't need to employ complex algorithms like neural networks or machine learning since the game's scope is limited, and performance is a priority.
-
-## Logic Breakdown
-
-### Position Tracking
-
-- **Paddle Alignment**: The AI keeps track of the paddle's y-position and aligns it with the ball's y-position. It aims to hit the ball with its center for the most predictable rebound angle.
-- **Ball Watch**: The AI constantly monitors the ball's position and direction, especially when the ball is headed towards it.
-
-### Predictive Movement
-
-- **Anticipation**: The AI anticipates where the ball will be when it reaches its side and moves the paddle accordingly.
-- **Difficulty Modulation**: Depending on the difficulty level, the AI's predictive capabilities and speed vary:
-  - **Easy**: The paddle moves directly towards the ball's current position but with a slower speed.
-  - **Medium**: It predicts where the ball will be shortly and moves faster than on easy mode.
-  - **Hard**: The AI uses a more advanced prediction of the ball's trajectory and moves at a high speed.
-
-### Speed and Direction Adjustment
-
-- The AI paddle's speed is adjusted according to the game's difficulty level.
-- If the ball's speed increases, the AI's reaction time decreases to maintain the challenge.
-
-### Boundary Constraints
-
-- The AI's movement is constrained within the game's vertical limits, ensuring that it doesn't move off-screen.
-
-## Development Considerations
-
-### Fairness
-
-- The AI must be beatable. Perfect prediction or reaction would make the game frustrating.
-
-### Performance
-
-- The AI's logic is executed within the game loop, hence it's optimized to run efficiently to prevent any lag in the game.
-
-### Responsiveness
-
-- The AI paddle's movements are smooth and continuous, closely mimicking the potential movements of a human player.
-
-## Implementation
-
-- The AI's behavior is coded in JavaScript, utilizing functions that handle its position, speed, and collision detection.
-- CSS is used to style the paddle and ball, while HTML elements are updated in real-time with the game's state.
 
 
 

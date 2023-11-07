@@ -3,7 +3,7 @@
 ### Note
 ### Please refer to the in-code comments for more details if this document is not detail enough
 
-## Complex JavaScript Usage
+## Complex and custom JavaScript Usage
 
 ## Table of Contents
 

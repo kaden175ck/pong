@@ -8,9 +8,6 @@
 
 This is a browser-based version of the classic Pong game, recreated using vanilla HTML, CSS, and JavaScript. No canvas is used in the development of this game.
 
-## Author
-
-Haoyang Shi - TUT01
 
 ## Project Overview
 

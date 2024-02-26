@@ -1,4 +1,4 @@
-# Guide for TA
+# Guide
 
 - README.md - This file provides an overview of the project, including its purpose, how to set it up, and how to use it.
 - EXPLANATION.md - Here, you'll find detailed explanations of the codebase, including how the algorithms work and the reasoning behind certain coding decisions.

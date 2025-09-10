@@ -1,3 +1,7 @@
+## Live Demo
+
+👉 [Click here to play the game!](https://kaden175ck.github.io/pong/)
+
 # Guide
 
 - README.md - This file provides an overview of the project, including its purpose, how to set it up, and how to use it.
@@ -7,7 +11,6 @@
 # Pong Game
 
 This is a browser-based version of the classic Pong game, recreated using vanilla HTML, CSS, and JavaScript. No canvas is used in the development of this game.
-
 
 ## Project Overview
 
@@ -43,8 +46,6 @@ To play the game locally:
 - **Collision Detection**: Determines when the ball makes contact with paddles or boundaries.
 - **Game States**: The game can be in a start, play, or end state, each with appropriate displays and controls.
 
-
-
 ## Custom Features
 
 ### Note
@@ -54,7 +55,6 @@ Please refer to the in-code comments or EXPLANATION.md for details animations, i
 - **Animations**: Smooth and engaging animations for paddle movement, game board and scoring.
 - **Interaction Mechanism**: Custom collision detection to handle the ball and paddle interactions effectively.
 - **Algorithms**: Game logic for AI player, ball movement, scoring, and paddle control.
-
 
 ## Assets Credits
 
